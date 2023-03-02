@@ -1,0 +1,6 @@
+django-bootstrap-form
+django-extensions
+django-widget-tweaks
+Django
+python-decouple
+xlwt

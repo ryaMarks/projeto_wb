@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+  @page {
+      size: A4; /* Change from the default size of A4 */
+      margin: 0mm; /* Set margin on each page */
+  }
+</style>
+<html>
+  <head>
+    <title>Orçamento de Material</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adicionando Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  </head>
+
+  <body>
+    <div style="background-image: linear-gradient(#b53438,  #561819); width: 100%; height: 50px;"></div>
+    <div style="display: flex; width: 100%; margin: 0 auto; ">
+      <div style="padding:10px;" ><a href="https://www.instagram.com/wb_instalacoes/" target="_blank"><i class="bi bi-instagram" style="padding:5px;"></i>wb_instalacoes</a></div>
+      <div style="padding:10px; margin-left: 100px;"><i class="bi bi-telephone"></i>(98)98303-3133</div>
+      <div style="padding:10px; margin-left: 100px;"><i class="bi bi-house"></i>Conjunto Turmalina, nº 08, Aurora, São Luís - MA.CEP: 65060-280</div>
+    </div>
+    <div class="container">
+      <div style="align-items: center; text-align: center;"><img src="{% static 'imgs/logo/logo.png' %}" alt="" width="200" height="200"></div>
+
+      <div>
+
+        <h1 style=" text-align: center; font-weight: bold;;">Orçamento de Material</h1>
+        {% if geral.4 == 'e' %}
+          <h6>Orçamento de entrada de Material.</h6>
+        {% else %}
+          <h6>Orçamento de saida de Material.</h6>
+        {% endif %}
+        <h6>Cliente: {{ geral.1 }}</h6>
+        <h6>Numero da Nota: {{ geral.2 }}</h6>
+        <h6>Data de emissão: {{ geral.3 }}</h6>
+      </div>
+
+      <div style="padding:50px;">
+        <table class="table table-striped">
+          <thead>
+              <tr>
+                <td>Produto</td>
+                <td>Quantidade</td>
+                <td>Valor Unitario</td>
+                <td>Valor Bruto(R$)</td>
+              </tr>
+              {% for obj in produto %}
+                <tr>
+                  <td>{{ obj.0 }}</td>
+                  <td>{{ obj.1 }}</td>
+                  <td>R$ {{ obj.2 }}</td>
+                  <td>R$ {{ obj.3 }}</td>
+                </tr>
+              {% endfor %}
+              <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td>R$ {{geral.0}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
