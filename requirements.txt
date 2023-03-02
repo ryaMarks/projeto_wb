@@ -4,3 +4,4 @@ django-widget-tweaks
 Django
 python-decouple
 xlwt
+weasyprint
