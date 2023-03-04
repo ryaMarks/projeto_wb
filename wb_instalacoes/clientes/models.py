@@ -59,9 +59,9 @@ class Cliente(models.Model):
 
     # dados de endereco
     rua = models.CharField('Endereço - Rua', max_length=100, blank=False, null=True)
-    numero = models.CharField('Nª da casa', max_length=10, blank=False, null=True)
-    complemento = models.CharField('Endereço - Complemento', max_length=100, blank=False, null=True)
-    bairro = models.CharField('Endereço - Bairro', max_length=100, blank=False)
+    numero = models.CharField('Nª da casa', max_length=10, null=True)
+    complemento = models.CharField('Endereço - Complemento', max_length=100, null=True)
+    bairro = models.CharField('Endereço - Bairro', max_length=100)
     cidade = models.CharField('Endereço - Cidade', max_length=100, blank=False)
     estado = models.CharField('Endereço - Estado', max_length=50, choices=ESTADOS_BR, default='---')
     cep = models.CharField('Endereço - CEP', max_length=50)

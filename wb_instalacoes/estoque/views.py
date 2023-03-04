@@ -18,6 +18,7 @@ import datetime
 from decimal import Decimal
 
 
+@login_required
 def estoque_entrada_list(request):
     template_name = 'estoque_list.html'
     objects = EstoqueEntrada.objects.all()
@@ -40,6 +41,7 @@ class EstoqueEntradaList(ListView):
         return context
 
 
+@login_required
 def estoque_entrada_detail(request, pk):
     template_name = 'estoque_detail.html'
     obj = EstoqueEntrada.objects.get(pk=pk)

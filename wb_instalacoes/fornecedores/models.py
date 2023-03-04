@@ -34,12 +34,7 @@ ESTADOS_BR = (
     ('Sergipe (SE)', 'Sergipe (SE)'),
     ('Tocantins (TO)', 'Tocantins (TO)'),
 )
-IE_TIPO = (
-    ('---', '---'),
-    ('1', 'Contribuinte de ICMS'),
-    ('9', 'Não contribuinte de ICMS'),
-    ('0', 'Contribuinte isento'),
-)
+
 
 
 # Create your models here.
@@ -49,7 +44,6 @@ class Fornecedor(models.Model):
     inscricao = models.CharField('Inscrição Estadual', max_length=50, unique=True)
     telefone = models.CharField('Telefone', max_length=20)
     email = models.CharField('E-Mail', max_length=50)
-    Tipo_de_inscrição_estadual = models.CharField(max_length=50, choices=IE_TIPO, default='---')  # 9=Não contribuinte
 
     # dados de endereco
     rua = models.CharField('Endereço - Rua', max_length=100, blank=True)
