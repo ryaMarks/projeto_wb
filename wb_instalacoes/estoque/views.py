@@ -179,7 +179,11 @@ def pdf_generate(request, pk):  # recebe a solicitacao html e o nome do usuario
         prod.append(obj.produto.preco)  # preço unitario do produto
         bruto = f'{Decimal(int(obj.quantidade) * float(obj.produto.preco)):,.2f}'
         prod.append(Decimal(bruto))  # preço bruto do produto
+        prod.append(obj.produto.medida)
         produto.append(prod)
+
+
+
 
     # coletando outros dados
     outros = []

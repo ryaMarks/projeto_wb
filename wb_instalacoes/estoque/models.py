@@ -17,7 +17,7 @@ class Estoque(TimeStampedModel):
     funcionario = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, null=True)
-    nf = models.PositiveIntegerField('nota fiscal', null=True, blank=True)
+    nf = models.PositiveIntegerField('nota fiscal', null=True, blank=False)
     movimento = models.CharField(max_length=1, choices=MOVIMENTO, blank=True)
 
     class Meta:

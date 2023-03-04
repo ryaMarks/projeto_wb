@@ -52,6 +52,7 @@
                 <td>Produto</td>
                 <td>Quantidade</td>
                 <td>Valor Unitario</td>
+                <td>Unidade de medida</td>
                 <td>Valor Bruto(R$)</td>
               </tr>
               {% for obj in produto %}
@@ -59,11 +60,13 @@
                   <td>{{ obj.0 }}</td>
                   <td>{{ obj.1 }}</td>
                   <td>R$ {{ obj.2 }}</td>
+                  <td>{{ obj.4 }}</td>
                   <td>R$ {{ obj.3 }}</td>
                 </tr>
               {% endfor %}
               <tr>
                 <td>Total</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>R$ {{geral.0}}</td>

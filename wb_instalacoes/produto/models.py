@@ -5,9 +5,9 @@ from ..fornecedores.models import Fornecedor
 # Create your models here.
 
 MEDIDAS = (
-    ('M', 'Metros (m)'),
-    ('KG', 'Kilos (Kg)'),
-    ('UN', 'Unidades'),
+    ('M- Metros', 'Metros (m)'),
+    ('KG - Kilos', 'Kilos (Kg)'),
+    ('UN- Unidades', 'Unidades'),
 )
 
 
