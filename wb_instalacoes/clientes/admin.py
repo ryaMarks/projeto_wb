@@ -11,7 +11,6 @@ class ClientesAdmin(admin.ModelAdmin):
         'cliente',
         'tipo',
         'telefone',
-        'email',
     )
     search_fields = ('cliente',)
     list_filter = ('tipo',)

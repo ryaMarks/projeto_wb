@@ -46,16 +46,9 @@ class Cliente(models.Model):
     cliente = models.CharField('Nome / Razão Social', max_length=50, unique=True)
     cpf_cnpj = models.CharField('CPF / CNPJ', max_length=50, unique=True)
     telefone = models.CharField('Telefone', max_length=20)
-    email = models.CharField('E-Mail', max_length=50)
 
     # dados de endereco
-    rua = models.CharField('Endereço - Rua', max_length=100, blank=False, null=True)
-    numero = models.CharField('Nª da casa', max_length=10, null=True)
-    complemento = models.CharField('Endereço - Complemento', max_length=100, null=True)
-    bairro = models.CharField('Endereço - Bairro', max_length=100)
-    cidade = models.CharField('Endereço - Cidade', max_length=100, blank=False)
-    estado = models.CharField('Endereço - Estado', max_length=50, choices=ESTADOS_BR, default='---')
-    cep = models.CharField('Endereço - CEP', max_length=50)
+    endereco = models.CharField('Endereço completo', max_length=100, blank=False, null=True)
 
     class Meta:
         ordering = ('cliente', )

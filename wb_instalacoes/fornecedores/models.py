@@ -43,16 +43,9 @@ class Fornecedor(models.Model):
     cnpj = models.CharField('CNPJ', max_length=50, unique=True)
     inscricao = models.CharField('Inscrição Estadual', max_length=50, unique=True)
     telefone = models.CharField('Telefone', max_length=20)
-    email = models.CharField('E-Mail', max_length=50)
 
-    # dados de endereco
-    rua = models.CharField('Endereço - Rua', max_length=100, blank=True)
-    numero = models.CharField('Nª da casa', max_length=10, blank=True, null=True)
-    complemento = models.CharField('Endereço - Complemento', max_length=100, blank=True, null=True)
-    bairro = models.CharField('Endereço - Bairro', max_length=100, blank=True)
-    cidade = models.CharField('Endereço - Cidade', max_length=100, blank=False)
-    estado = models.CharField('Endereço - Estado', max_length=50, choices=ESTADOS_BR, default='---')
-    cep = models.CharField('Endereço - CEP', max_length=50, blank=True)
+    # dados de endereco (transformar em um campo so)
+    endereco = models.CharField('Endereço completo', max_length=100, blank=True)
 
     class Meta:
         ordering = ('fornecedor', )

@@ -11,6 +11,5 @@ class FornecedoresAdmin(admin.ModelAdmin):
         'fornecedor',
         'cnpj',
         'telefone',
-        'email',
     )
     search_fields = ('fornecedor',)
