@@ -18,7 +18,9 @@
     <div class="col-md-6" style="padding: 30px;">
       <form action="." method="post">
         {% csrf_token %}
-        <img src="{% static 'imgs/logo/logo.png' %}">
+        <div style="align-items: center; text-align: center; padding: 10px;" >
+          <img src="{% static 'imgs/logo/imagem_nota.jpg' %}">
+        </div>
         <!-- Email input -->
         <div class="form-outline mb-4">
           <input type="text" name="username" id="form2Example1" class="form-control" placeholder="Username ou Email" required autofocus/>
