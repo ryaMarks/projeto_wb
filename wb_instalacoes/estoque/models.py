@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls import reverse_lazy
 from ..core.models import TimeStampedModel
 from ..produto.models import Produto
 from ..clientes.models import Cliente
@@ -24,9 +23,8 @@ class Estoque(TimeStampedModel):
         ordering = ('-created',)
 
     def __str__(self):
-        if self.nf:
-            return '{}'.format(self.pk, self.nf, self.created.strftime('%d-%m-%Y'))
         return '{}'.format(self.pk, self.created.strftime('%d-%m-%Y'))
+
 
     def nf_formated(self):
         if self.nf:

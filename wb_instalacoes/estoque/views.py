@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect, HttpResponse
@@ -180,10 +179,8 @@ def pdf_generate(request, pk):  # recebe a solicitacao html e o nome do usuario
         bruto = f'{Decimal(int(obj.quantidade) * float(obj.produto.preco)):,.2f}'
         prod.append(Decimal(bruto))  # preço bruto do produto
         prod.append(obj.produto.medida)
+        # joga todos os dados na variavel final
         produto.append(prod)
-
-
-
 
     # coletando outros dados
     outros = []
@@ -196,7 +193,8 @@ def pdf_generate(request, pk):  # recebe a solicitacao html e o nome do usuario
     else:
         outros.append(lista.cliente)
     outros.append(lista.nf)
-    outros.append(datetime.datetime.now())
+    print(lista.created)
+    outros.append(lista.created)
     outros.append(lista.movimento)
 
 

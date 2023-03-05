@@ -28,6 +28,7 @@
                     <button style="background-image: linear-gradient(#b53438,  #561819);" type="submit" class="btn btn-success">Exportar Produtos</button>
                 </div>
             </a>
+            <a href="#" class="btn  btn-light"><i class="fa fa-trash" aria-hidden="true"></i></a>
         </div>
     </div>
 
@@ -35,7 +36,8 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <td class="text-center">Codigo de Registro</td>
+                <td></td>
+                <td class="text-center">Codigo</td>
                 <td class="text-center">Produto</td>
                 <td class="text-center">Preço</td>
                 <td class="text-center">Unidade de Medida</td>
@@ -46,6 +48,7 @@
         <tbody>
             {% for object in object_list %}
                 <tr>
+                    <td><input type="checkbox" id=object.codigo name="scales"></td>
                     <td class="text-center">{{object.codigo}}</td>
                     <td class="text-center">
                         <a  href="{{object.get_absolute_url}}">{{object.produto}}</a>
