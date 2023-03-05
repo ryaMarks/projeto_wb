@@ -193,7 +193,6 @@ def pdf_generate(request, pk):  # recebe a solicitacao html e o nome do usuario
     else:
         outros.append(lista.cliente)
     outros.append(lista.nf)
-    print(lista.created)
     outros.append(lista.created)
     outros.append(lista.movimento)
 
