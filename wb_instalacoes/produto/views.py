@@ -31,6 +31,7 @@ class ProdutoList(ListView):
 def produto_detail(request, pk):
     template_name = 'produto_detail.html'
     obj = Produto.objects.get(pk=pk)
+    obj.preco_venda = obj.preco_compra + obj.preco_compra * (obj.lucro/100)
     context = {'object': obj}
     return render(request, template_name, context)
 
@@ -53,6 +54,18 @@ def produto_delete(request, pk):
     produto.delete()
     messages.success(request, 'Produto deletado com sucesso.')
     return HttpResponseRedirect(reverse('produto:produto_list'))
+
+
+@login_required
+def delete_all(request):
+    if request.method == 'POST':
+        for produto in Produto.objects.all():
+            if str(produto.pk) in request.POST:  # verifica se name-input foi enviado na requisição
+                if request.POST[str(produto.pk)] == 'on':
+                    produto.delete()
+    return HttpResponseRedirect(reverse('produto:produto_list'))
+
+
 
 
 @login_required

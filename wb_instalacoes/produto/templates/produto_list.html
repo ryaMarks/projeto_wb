@@ -11,59 +11,66 @@
     {% endif %}
 {% endfor %}
 
-<div class="page-header">
-    <h2>Lista de Produtos</h2>
 
-    <div class="col-sm-12" style="margin-top: 10px;">
-        <div class="form-inline buttons">
-          <div style="padding: 10px;">
-            <a href="{% url 'produto:produto_add' %}">
-                <button type="button" class="btn btn-primary">
-                  <span class="fa fa-plus"></span> Adicionar
-                </button>
-            </a>
-          </div>
-            <a href="{% url 'produto:export_xlsx' %}">
-                <div style="padding: 10px;">
-                    <button style="background-image: linear-gradient(#b53438,  #561819);" type="submit" class="btn btn-success">Exportar Produtos</button>
-                </div>
-            </a>
-            <a href="#" class="btn  btn-light"><i class="fa fa-trash" aria-hidden="true"></i></a>
+<form action="{% url 'produto:delete_all' %}" method="post">
+    {% csrf_token %}
+    <div class="page-header">
+        <h2>Lista de Produtos</h2>
+
+        <div class="col-sm-12" style="margin-top: 10px;">
+            <div class="form-inline buttons">
+              <div style="padding: 10px;">
+                <a href="{% url 'produto:produto_add' %}">
+                    <button type="button" class="btn btn-primary">
+                      <span class="fa fa-plus"></span> Adicionar
+                    </button>
+                </a>
+              </div>
+                <a href="{% url 'produto:export_xlsx' %}">
+                    <div style="padding: 10px;">
+                        <button style="background-image: linear-gradient(#b53438,  #561819);" type="submit" class="btn btn-success">Exportar Produtos</button>
+                    </div>
+                </a>
+                <input type="submit" class="btn  btn-light" value="Apagar"></input>
+            </div>
         </div>
-    </div>
 
-    {%if object_list%}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td></td>
-                <td class="text-center">Codigo</td>
-                <td class="text-center">Produto</td>
-                <td class="text-center">Preço</td>
-                <td class="text-center">Unidade de Medida</td>
-                <td class="text-center">Fabricante</td>
-                <td class="text-center">Quantidade</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for object in object_list %}
+        {%if object_list%}
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td><input type="checkbox" id=object.codigo name="scales"></td>
-                    <td class="text-center">{{object.codigo}}</td>
-                    <td class="text-center">
-                        <a  href="{{object.get_absolute_url}}">{{object.produto}}</a>
-                    </td>
-                    <td class="text-center">R$ <span >{{object.preco}}</span></td>
-                    <td class="text-center"> <span >{{object.medida}}</span></td>
-                    <td class="text-center">{{object.fabricante}}</td>
-                    <td class="text-center">{{object.estoque}}</td>
+                    <td></td>
+                    <td class="text-center">Codigo</td>
+                    <td class="text-center">Produto</td>
+                    <td class="text-center">Preço</td>
+                    <td class="text-center">Unidade de Medida</td>
+                    <td class="text-center">Fabricante</td>
+                    <td class="text-center">Quantidade</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-        <p class="alert alert-warning">Sem itens na lista</p>
-    {% endif %}
-</div>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td><input type="checkbox" id={{object.pk}} name={{object.pk}}></td>
+                        <td class="text-center">{{object.codigo}}</td>
+                        <td class="text-center">
+                            <a  href="{{object.get_absolute_url}}">{{object.produto}}</a>
+                        </td>
+                        <td class="text-center">R$ <span >{{object.preco}}</span></td>
+                        <td class="text-center"> <span >{{object.medida}}</span></td>
+                        <td class="text-center">{{object.fabricante}}</td>
+                        <td class="text-center">{{object.estoque}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p class="alert alert-warning">Sem itens na lista</p>
+        {% endif %}
+    </div>
+</form>
 {% include "includes/pagination.html" %}
+{% block js %}
+
+{% endblock js %}
 {% endblock content %}

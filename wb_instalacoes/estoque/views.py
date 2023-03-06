@@ -13,7 +13,6 @@ from .models import (
 )
 from django.template.loader import render_to_string
 from weasyprint import HTML  # importa biblioteca do weasyprint para arquivos estaticos
-import datetime
 from decimal import Decimal
 
 
