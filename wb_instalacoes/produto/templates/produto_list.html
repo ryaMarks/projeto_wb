@@ -51,7 +51,7 @@
             <tbody>
                 {% for object in object_list %}
                     <tr>
-                        <td><input type="checkbox" id={{object.pk}} name={{object.pk}}></td>
+                        <td><input value=True type="checkbox" id={{object.pk}} name={{object.pk}}></td>
                         <td class="text-center">{{object.codigo}}</td>
                         <td class="text-center">
                             <a  href="{{object.get_absolute_url}}">{{object.produto}}</a>

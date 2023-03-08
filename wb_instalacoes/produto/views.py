@@ -31,7 +31,7 @@ class ProdutoList(ListView):
 def produto_detail(request, pk):
     template_name = 'produto_detail.html'
     obj = Produto.objects.get(pk=pk)
-    obj.preco_venda = obj.preco_compra + obj.preco_compra * (obj.lucro/100)
+    obj.preco_venda = int(obj.preco_compra) + int(obj.preco_compra) * (int(obj.lucro)/100)
     context = {'object': obj}
     return render(request, template_name, context)
 

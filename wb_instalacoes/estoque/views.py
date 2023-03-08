@@ -171,11 +171,13 @@ def pdf_generate(request, pk):  # recebe a solicitacao html e o nome do usuario
     # coletando dados dos produtos
     produto = []
     for obj in lista.estoques.all():
+        obj.produto.preco_venda = int(obj.produto.preco_compra) + int(obj.produto.preco_compra) * (int(obj.produto.lucro)/100)
+
         prod = []
         prod.append(obj.produto.produto)  # nome do produto
         prod.append(obj.quantidade)  # quantidade movimentada
-        prod.append(obj.produto.preco)  # preço unitario do produto
-        bruto = f'{Decimal(int(obj.quantidade) * float(obj.produto.preco)):,.2f}'
+        prod.append(obj.produto.preco_venda)  # preço unitario do produto
+        bruto = f'{Decimal(int(obj.quantidade) * float(obj.produto.preco_venda)):,.2f}'
         prod.append(Decimal(bruto))  # preço bruto do produto
         prod.append(obj.produto.medida)
         # joga todos os dados na variavel final
